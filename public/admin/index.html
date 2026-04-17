@@ -55,6 +55,15 @@
                 <li data-target="sys-projects">
                     <i class="fa-solid fa-diagram-project"></i> Directives
                 </li>
+                <li data-target="sys-profile">
+                    <i class="fa-solid fa-user-gear"></i> Profile
+                </li>
+                <li data-target="sys-skills">
+                    <i class="fa-solid fa-layer-group"></i> Arsenal
+                </li>
+                <li data-target="sys-timeline">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Timeline
+                </li>
             </ul>
 
             <button class="logout-btn" id="logout-btn">
@@ -122,6 +131,107 @@
                     </div>
                     <div class="projects-grid" id="admin-projects-grid">
                         <!-- Projects populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-section" id="sys-profile">
+                <div class="glass-card panel">
+                    <h2>Identity Configuration</h2>
+                    <form id="profile-form">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Operational Name</label>
+                                <input type="text" id="prof-name" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Professional Designation</label>
+                                <input type="text" id="prof-title" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Hero description (Main Banner)</label>
+                            <textarea id="prof-hero-desc" rows="2"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label>About Me / Internal Bio</label>
+                            <textarea id="prof-about" rows="5"></textarea>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>GitHub Node</label>
+                                <input type="text" id="prof-github">
+                            </div>
+                            <div class="input-group">
+                                <label>LinkedIn Node</label>
+                                <input type="text" id="prof-linkedin">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Email Uplink</label>
+                                <input type="email" id="prof-email">
+                            </div>
+                            <div class="input-group">
+                                <label>Physical Location</label>
+                                <input type="text" id="prof-location">
+                            </div>
+                        </div>
+                        <button type="submit" class="cyber-btn">
+                            <span>UPDATE IDENTITY</span>
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <div id="profile-status" class="status-msg"></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="view-section" id="sys-skills">
+                <div class="glass-card panel">
+                    <div class="panel-header">
+                        <h2>Technical Arsenal (Skills)</h2>
+                        <button class="cyber-btn small" id="show-skill-form">
+                            <i class="fa-solid fa-plus"></i> Add Skill
+                        </button>
+                    </div>
+                    <div id="skill-form-container" style="display:none; margin-bottom: 2rem; padding: 1rem; border: 1px solid var(--cyan-glow);">
+                        <form id="skill-form">
+                            <div class="input-row">
+                                <input type="text" id="skill-name" placeholder="Skill Name (e.g. React)" required>
+                                <select id="skill-category" required>
+                                    <option value="Mobile">Mobile</option>
+                                    <option value="Web">Web</option>
+                                    <option value="Backend">Backend</option>
+                                    <option value="Tools/Other">Tools/Other</option>
+                                </select>
+                                <input type="text" id="skill-icon" placeholder="FA Icon (e.g. fa-brands fa-react)">
+                            </div>
+                            <button type="submit" class="cyber-btn small">SAVE</button>
+                        </form>
+                    </div>
+                    <div class="skills-manager-list" id="admin-skills-list">
+                        <!-- Skills will be listed here with delete button -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-section" id="sys-timeline">
+                <div class="glass-card panel">
+                    <div class="panel-header">
+                        <h2>Institutional Timeline</h2>
+                        <div class="btn-group">
+                            <button class="cyber-btn small" onclick="showTimelineForm('exp')">Add Experience</button>
+                            <button class="cyber-btn small" onclick="showTimelineForm('edu')">Add Education</button>
+                        </div>
+                    </div>
+                    <div id="timeline-form-container" style="display:none; margin-bottom: 2rem; padding: 1rem; border: 1px solid var(--cyan-glow);">
+                        <!-- Form injected via JS -->
+                    </div>
+                    <div class="timeline-manager">
+                        <h3>Experience</h3>
+                        <div id="admin-exp-list"></div>
+                        <h3 style="margin-top:2rem">Education</h3>
+                        <div id="admin-edu-list"></div>
                     </div>
                 </div>
             </div>
