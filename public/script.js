@@ -1,10 +1,10 @@
 // Dynamic Content State
 let siteProfile = {
     name: 'Sehas Pathirana',
-    typingRoles: ["Undergraduate Cyber Security Student", "Full-Stack Developer", "Flutter & Android Developer"],
-    heroDesc: 'Engineering secure, scalable, and user-friendly digital solutions.',
-    aboutMe: '',
-    socialLinks: { github: '#', linkedin: '#' }
+    typingRoles: ["Cyber Security Student", "Full-Stack Developer", "Flutter & Android Developer", "AR Platform Creator"],
+    heroDesc: 'Motivated Cyber Security undergraduate with a passion for building secure and innovative solutions.',
+    aboutMe: 'I am a motivated Cyber Security undergraduate with a proven track record in developing secure mobile and web applications.',
+    socialLinks: { github: 'https://github.com/pathiranasehas676-creator', linkedin: 'https://linkedin.com' }
 };
 
 // Custom Cursor Glow Effect
@@ -74,6 +74,12 @@ async function initializeCMS() {
             document.getElementById('profile-location').textContent = p.location;
             document.getElementById('profile-email').textContent = p.email;
             document.getElementById('profile-email').href = `mailto:${p.email}`;
+            
+            const phoneEl = document.getElementById('profile-phone');
+            if (phoneEl) {
+                phoneEl.textContent = p.phone || phoneEl.textContent;
+                phoneEl.href = `tel:${p.phone}`;
+            }
             
             document.getElementById('github-link').href = p.socialLinks.github;
             document.getElementById('linkedin-link').href = p.socialLinks.linkedin;

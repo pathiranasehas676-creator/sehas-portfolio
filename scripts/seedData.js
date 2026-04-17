@@ -10,7 +10,7 @@ const seed = async () => {
     try {
         const uri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/portfolio_db';
         await mongoose.connect(uri);
-        console.log('🌱 Seeding database...');
+        console.log('🌱 Seeding database with CV information...');
 
         // Clear existing
         await Profile.deleteMany({});
@@ -21,65 +21,37 @@ const seed = async () => {
 
         await Profile.create({
             name: 'Sehas Pathirana',
-            title: 'Undergraduate Cyber Security Student | Full-Stack Developer',
-            typingRoles: ["Undergraduate Cyber Security Student", "Full-Stack Developer", "Flutter & Android Developer", "AI-Powered Project Builder"],
-            heroDesc: 'Engineering secure, scalable, and user-friendly digital solutions. Combining a strong foundation in Cyber Security with practical Full-Stack and Mobile development expertise.',
-            aboutMe: 'I am an undergraduate student specializing in Cyber Security, with a deep passion for building secure and efficient full-stack applications. My journey in technology started with a curiosity for how things work under the hood, leading me to master both the offensive and defensive aspects of computing.',
-            email: 'hello@sehas.dev',
-            location: 'Sri Lanka',
+            title: 'Cyber Security Student | Full-Stack Developer',
+            typingRoles: ["Cyber Security Student", "Full-Stack Developer", "Flutter & Android Developer", "AR Platform Creator"],
+            heroDesc: 'Motivated Cyber Security undergraduate with a passion for building secure and innovative solutions.',
+            aboutMe: 'I am a motivated Cyber Security undergraduate with a proven track record in developing secure mobile and web applications. My expertise spans across Flutter, Android, and Full-Stack development, with a strong focus on cybersecurity principles and secure architecture.',
+            email: 'pathiranasehas988@gmail.com',
+            phone: '+94 774245205',
+            location: 'Homagama, Sri Lanka',
             socialLinks: {
-                github: 'https://github.com',
+                github: 'https://github.com/pathiranasehas676-creator',
                 linkedin: 'https://linkedin.com'
             }
         });
 
         const skills = [
-            // 1. Core Domains
-            { name: 'Cyber Security Fundamentals', category: 'Core Domains', icon: 'fa-solid fa-shield-halved' },
-            { name: 'Full-Stack Development', category: 'Core Domains', icon: 'fa-solid fa-layer-group' },
-            { name: 'Mobile App Development', category: 'Core Domains', icon: 'fa-solid fa-mobile-button' },
-            { name: 'Backend Systems & APIs', category: 'Core Domains', icon: 'fa-solid fa-server' },
-            { name: 'AI-Powered App Development', category: 'Core Domains', icon: 'fa-solid fa-brain' },
+            // Programming
+            { name: 'Flutter', category: 'Programming & Languages', icon: 'fa-solid fa-mobile-screen' },
+            { name: 'Android (Java/Kotlin)', category: 'Programming & Languages', icon: 'fa-brands fa-android' },
+            { name: 'Node.js', category: 'Programming & Languages', icon: 'fa-brands fa-node-js' },
+            { name: 'Express', category: 'Programming & Languages', icon: 'fa-solid fa-server' },
             
-            // 2. Programming & Languages
-            { name: 'Java', category: 'Programming & Languages', icon: 'fa-brands fa-java' },
-            { name: 'Kotlin', category: 'Programming & Languages', icon: 'fa-solid fa-code' },
-            { name: 'JavaScript', category: 'Programming & Languages', icon: 'fa-brands fa-js-square' },
-            { name: 'Dart', category: 'Programming & Languages', icon: 'fa-solid fa-terminal' },
-            
-            // 3. Mobile Development
-            { name: 'Flutter (Cross-platform Apps)', category: 'Mobile Development', icon: 'fa-solid fa-mobile-screen-button' },
-            { name: 'Android Dev (Java & Kotlin)', category: 'Mobile Development', icon: 'fa-brands fa-android' },
-            
-            // 4. Web & Frontend
+            // Web
             { name: 'HTML5', category: 'Web & Frontend', icon: 'fa-brands fa-html5' },
             { name: 'CSS3', category: 'Web & Frontend', icon: 'fa-brands fa-css3-alt' },
-            { name: 'React (Intermediate)', category: 'Web & Frontend', icon: 'fa-brands fa-react' },
+            { name: 'React', category: 'Web & Frontend', icon: 'fa-brands fa-react' },
             
-            // 5. Backend & Databases
-            { name: 'Node.js', category: 'Backend & Databases', icon: 'fa-brands fa-node-js' },
-            { name: 'Express.js', category: 'Backend & Databases', icon: 'fa-solid fa-server' },
-            { name: 'Firebase (Auth/Firestore/Storage)', category: 'Backend & Databases', icon: 'fa-solid fa-fire' },
-            { name: 'MySQL', category: 'Backend & Databases', icon: 'fa-solid fa-database' },
-            { name: 'SQLite', category: 'Backend & Databases', icon: 'fa-solid fa-database' },
-            
-            // 6. APIs & Integration
-            { name: 'REST API Development', category: 'APIs & Integration', icon: 'fa-solid fa-cloud-arrow-down' },
-            { name: 'Third-party API Integration', category: 'APIs & Integration', icon: 'fa-solid fa-link' },
-            { name: 'Firebase Cloud Messaging (FCM)', category: 'APIs & Integration', icon: 'fa-solid fa-bell' },
-            
-            // 7. Tools & Platforms
+            // Tools
+            { name: 'Firebase', category: 'Tools & Platforms', icon: 'fa-solid fa-fire' },
             { name: 'Git & GitHub', category: 'Tools & Platforms', icon: 'fa-brands fa-github' },
             { name: 'Android Studio', category: 'Tools & Platforms', icon: 'fa-solid fa-keyboard' },
-            { name: 'Visual Studio Code', category: 'Tools & Platforms', icon: 'fa-solid fa-laptop-code' },
-            { name: 'Google Play Console', category: 'Tools & Platforms', icon: 'fa-brands fa-google-play' },
-            
-            // 8. Soft + Practical Skills (Renamed for exact match)
-            { name: 'Problem Solving', category: 'Soft + Practical Skills', icon: 'fa-solid fa-lightbulb' },
-            { name: 'Debugging', category: 'Soft + Practical Skills', icon: 'fa-solid fa-bug' },
-            { name: 'System Design Thinking', category: 'Soft + Practical Skills', icon: 'fa-solid fa-diagram-project' },
-            { name: 'Team Collaboration', category: 'Soft + Practical Skills', icon: 'fa-solid fa-users' },
-            { name: 'Time Management', category: 'Soft + Practical Skills', icon: 'fa-solid fa-clock' }
+            { name: 'VS Code', category: 'Tools & Platforms', icon: 'fa-solid fa-code' },
+            { name: 'Google Play Console', category: 'Tools & Platforms', icon: 'fa-brands fa-google-play' }
         ];
         await Skill.insertMany(skills);
 
@@ -93,12 +65,30 @@ const seed = async () => {
 
         await Education.create({
             degree: 'BSc (Hons) in Cyber Security',
-            institution: 'SLIIT',
-            period: '2021 - Present',
+            institution: 'Staffordshire University / APIIT',
+            period: '2025 - Present',
             status: 'Ongoing'
         });
 
+        await Education.create({
+            degree: 'Foundation Programme in Computing',
+            institution: 'APIIT University',
+            period: '2023 - 2024',
+            status: 'Completed'
+        });
+
         const projects = [
+            {
+                title: 'Antigravity AI',
+                category: 'AR Platform',
+                description: 'An innovative AR platform built using Kotlin and Firebase. Available on the Google Play Store, providing immersive digital experiences.',
+                tech_stack: ['Kotlin', 'Firebase', 'ARCore'],
+                github_url: 'https://github.com',
+                demo_url: 'https://play.google.com',
+                icon_class: 'fa-solid fa-vr-cardboard',
+                gradient_class: 'bg-gradient-1',
+                badge_text: 'Play Store'
+            },
             {
                 title: 'TripMe.AI',
                 category: 'AI Application',
@@ -107,46 +97,24 @@ const seed = async () => {
                 github_url: 'https://github.com',
                 demo_url: 'https://tripme-ai.web.app',
                 icon_class: 'fa-solid fa-plane-departure',
-                gradient_class: 'bg-gradient-1',
-                badge_text: 'Beta'
-            },
-            {
-                title: 'Boom Music',
-                category: 'Mobile App',
-                description: 'A TikTok-style short video app for music lovers. Features real-time video streaming, profile systems, and follow mechanics.',
-                tech_stack: ['Kotlin', 'Firebase', 'ExoPlayer', 'Node.js'],
-                github_url: 'https://github.com',
-                demo_url: '#',
-                icon_class: 'fa-solid fa-music',
                 gradient_class: 'bg-gradient-2',
-                badge_text: 'New'
+                badge_text: 'Live'
             },
             {
-                title: 'Cap Template',
-                category: 'Play Store App',
-                description: 'A highly successful CapCut template sharing platform with over 1,000,000 downloads and a growing global community.',
-                tech_stack: ['Java', 'PHP', 'MySQL', 'Retrofit'],
-                github_url: '#',
-                demo_url: 'https://play.google.com',
-                icon_class: 'fa-solid fa-video',
-                gradient_class: 'bg-gradient-3',
-                badge_text: '1M+ DLs'
-            },
-            {
-                title: 'CityPass SL',
-                category: 'Academic Project',
-                description: 'A smart public transport ticketing system for Sri Lanka, streamlining the commuter experience with digital passes.',
-                tech_stack: ['Flutter', 'Firebase', 'Google Maps API'],
+                title: 'Campus Web Projects',
+                category: 'Web Development',
+                description: 'Collection of various web applications developed for academic requirements, focused on UX and security.',
+                tech_stack: ['HTML', 'CSS', 'JavaScript'],
                 github_url: 'https://github.com',
                 demo_url: '#',
-                icon_class: 'fa-solid fa-bus',
-                gradient_class: 'bg-gradient-1',
-                badge_text: 'Awarded'
+                icon_class: 'fa-solid fa-laptop-code',
+                gradient_class: 'bg-gradient-3',
+                badge_text: 'Academic'
             }
         ];
         await Project.insertMany(projects);
 
-        console.log('✅ Seeding complete! Database is ready.');
+        console.log('✅ Seeding complete! CV data is live.');
         process.exit();
     } catch (err) {
         console.error('Seeding Error:', err);

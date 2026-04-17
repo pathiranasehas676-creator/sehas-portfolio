@@ -7,6 +7,7 @@ const ProfileSchema = new mongoose.Schema({
     aboutMe: { type: String, default: '' },
     heroDesc: { type: String, default: 'Engineering secure, scalable, and user-friendly digital solutions. Combining a strong foundation in Cyber Security with practical Full-Stack and Mobile development expertise.' },
     email: { type: String, default: 'hello@example.com' },
+    phone: { type: String, default: '' },
     location: { type: String, default: 'Sri Lanka' },
     socialLinks: {
         github: { type: String, default: 'https://github.com' },
