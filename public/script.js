@@ -118,9 +118,21 @@ async function initializeCMS() {
             renderProjects(projectsData.data);
         }
 
+        const expRes = await fetch('/api/experience');
+        const expData = await expRes.json();
+        if (expData.success) renderExperience(expData.data);
+
         const eduRes = await fetch('/api/education');
         const eduData = await eduRes.json();
         if (eduData.success) renderEducation(eduData.data);
+
+        // Fetch Certifications
+        const certRes = await fetch('/api/certifications');
+        const certData = await certRes.json();
+        if (certData.success) {
+            certifications = certData.data;
+            renderCertifications();
+        }
 
         // Final refresh after all content is ready
         refreshReveal();
@@ -153,8 +165,8 @@ function renderSkills(skills) {
         const gradClass = `bg-gradient-${(index % 3) + 1}`;
         
         const catDiv = document.createElement('div');
-        catDiv.className = 'skill-card project-card reveal slide-up';
-        catDiv.style.transitionDelay = `${index * 0.1}s`;
+        catDiv.className = 'skill-card project-card';
+        // catDiv.style.transitionDelay = `${index * 0.1}s`;
         catDiv.innerHTML = `
             <div class="project-img-wrapper">
                 <div class="project-placeholder ${gradClass}">
@@ -189,8 +201,8 @@ function renderProjects(projects) {
     
     projects.forEach((p, index) => {
         const card = document.createElement('div');
-        card.className = 'project-card reveal slide-up';
-        card.style.transitionDelay = `${index * 0.15}s`;
+        card.className = 'project-card';
+        // card.style.transitionDelay = `${index * 0.15}s`;
         // Use DB provided gradient/icon or fallback
         const gradClass = p.gradient_class || `bg-gradient-${(index % 3) + 1}`;
         const iconClass = p.icon_class || 'fa-solid fa-code';
@@ -226,7 +238,7 @@ function renderExperience(exp) {
     container.innerHTML = '';
     exp.forEach((item, index) => {
         const div = document.createElement('div');
-        div.className = 'exp-item reveal slide-up';
+        div.className = 'exp-item';
         div.style.transitionDelay = `${index * 0.1}s`;
         div.innerHTML = `
             <div class="exp-card">
@@ -256,7 +268,7 @@ function renderEducation(edu) {
     container.innerHTML = '';
     edu.forEach((item, index) => {
         const div = document.createElement('div');
-        div.className = 'exp-item reveal slide-up';
+        div.className = 'exp-item';
         div.style.transitionDelay = `${index * 0.1}s`;
         div.innerHTML = `
             <div class="exp-card">
@@ -286,111 +298,12 @@ const terminalLines = [
 ];
 
 // Certifications Data
-let certifications = [
-    {
-        id: 1,
-        title: "Introduction to Cyber Security",
-        issuer: "Simplilearn SkillUp",
-        category: "Security",
-        image: "assets/certs/originals/simplilearn_cyber_security.png", 
-        verify_url: "assets/certs/upload/SkillUp.pdf",
-        original_url: "assets/certs/originals/simplilearn_cyber_security.png"
-    },
-    {
-        id: 2,
-        title: "Cybrary Orientation",
-        issuer: "Cybrary",
-        category: "Security",
-        image: "assets/certs/originals/cybrary_orientation.png",
-        verify_url: "assets/certs/upload/cybrary-cert-cybrary-orientation-2025.pdf",
-        original_url: "assets/certs/originals/cybrary_orientation.png"
-    },
-    {
-        id: 3,
-        title: "Offensive Security Operations",
-        issuer: "Cybrary",
-        category: "Security",
-        image: "assets/certs/originals/cybrary_offensive_security.png",
-        verify_url: "assets/certs/upload/cybrary-cert-offensive-security-operations.pdf",
-        original_url: "assets/certs/originals/cybrary_offensive_security.png"
-    },
-    {
-        id: 4,
-        title: "AI Infrastructure: AI Hypercomputer",
-        issuer: "Google Cloud",
-        category: "Cloud & AI",
-        image: "assets/certs/originals/google_ai_hypercomputer.png",
-        verify_url: "https://www.cloudskillsboost.google/",
-        original_url: "assets/certs/originals/google_ai_hypercomputer.png"
-    },
-    {
-        id: 5,
-        title: "Gemini Image-to-Sheets Hack",
-        issuer: "Google Cloud",
-        category: "Cloud & AI",
-        image: "assets/certs/originals/google_gemini_hack.png",
-        verify_url: "https://www.cloudskillsboost.google/",
-        original_url: "assets/certs/originals/google_gemini_hack.png"
-    },
-    {
-        id: 6,
-        title: "Tame Your Inbox with AI",
-        issuer: "Google Cloud",
-        category: "Cloud & AI",
-        image: "assets/certs/originals/google_ai_inbox.png",
-        verify_url: "https://www.cloudskillsboost.google/",
-        original_url: "assets/certs/originals/google_ai_inbox.png"
-    },
-    {
-        id: 7,
-        title: "GDC Air-Gapped Security Operator",
-        issuer: "Google Cloud",
-        category: "Security",
-        image: "assets/certs/originals/google_security_operator.png",
-        verify_url: "https://www.cloudskillsboost.google/",
-        original_url: "assets/certs/originals/google_security_operator.png"
-    },
-    {
-        id: 8,
-        title: "Skills Arcade Trivia Week 4",
-        issuer: "Google Cloud",
-        category: "Cloud & AI",
-        image: "assets/certs/originals/google_trivia_week4.png",
-        verify_url: "https://www.cloudskillsboost.google/",
-        original_url: "assets/certs/originals/google_trivia_week4.png"
-    },
-    {
-        id: 9,
-        title: "Amplify Exec Voices with AI",
-        issuer: "Google Cloud",
-        category: "Cloud & AI",
-        image: "assets/certs/originals/google_ai_amplify.png",
-        verify_url: "https://www.cloudskillsboost.google/",
-        original_url: "assets/certs/originals/google_ai_amplify.png"
-    },
-    {
-        id: 10,
-        title: "Personal Feedback Agent",
-        issuer: "Google Cloud",
-        category: "Cloud & AI",
-        image: "assets/certs/originals/google_feedback_agent.png",
-        verify_url: "https://www.cloudskillsboost.google/",
-        original_url: "assets/certs/originals/google_feedback_agent.png"
-    },
-    {
-        id: 11,
-        title: "Skills Arcade Trivia Week 1",
-        issuer: "Google Cloud",
-        category: "Cloud & AI",
-        image: "assets/certs/originals/google_trivia_week1.png",
-        verify_url: "https://www.cloudskillsboost.google/",
-        original_url: "assets/certs/originals/google_trivia_week1.png"
-    }
-];
+let certifications = []; // Initialized as empty, fetched from backend
+
 
 function renderCertifications(filter = 'All') {
     const grid = document.getElementById('cert-grid');
-    if (!grid) return;
+    if (!grid || !certifications.length) return;
 
     const filtered = filter === 'All' 
         ? certifications 
@@ -400,8 +313,8 @@ function renderCertifications(filter = 'All') {
     
     filtered.forEach((cert, index) => {
         const card = document.createElement('div');
-        card.className = 'cert-card glass-card outer-glow reveal slide-up';
-        card.style.transitionDelay = `${index * 0.1}s`;
+        card.className = 'cert-card glass-card outer-glow';
+        // card.style.transitionDelay = `${index * 0.1}s`; // Removed per-card animation
         
         card.innerHTML = `
             <div class="cert-image">
@@ -530,6 +443,16 @@ function initCertSlider() {
 
         slider.addEventListener('scroll', updateButtons);
         window.addEventListener('resize', updateButtons);
+        
+        // Use ResizeObserver to update when content (grid) changes size
+        const grid = document.getElementById('cert-grid');
+        if (grid) {
+            const resizeObserver = new ResizeObserver(() => {
+                updateButtons();
+            });
+            resizeObserver.observe(grid);
+        }
+
         setTimeout(updateButtons, 500); // Initial check
     }
 

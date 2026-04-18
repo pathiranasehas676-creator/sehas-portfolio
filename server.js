@@ -27,6 +27,8 @@ const profileAPI = require('./routes/profile');
 const skillsAPI = require('./routes/skills');
 const experienceAPI = require('./routes/experience');
 const educationAPI = require('./routes/education');
+const certificationsAPI = require('./routes/certifications');
+
 
 app.use('/api/contact', contactAPI);
 app.use('/api/projects', projectsAPI);
@@ -36,6 +38,8 @@ app.use('/api/profile', profileAPI);
 app.use('/api/skills', skillsAPI);
 app.use('/api/experience', experienceAPI);
 app.use('/api/education', educationAPI);
+app.use('/api/certifications', certificationsAPI);
+
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
