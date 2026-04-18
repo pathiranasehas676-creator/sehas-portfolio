@@ -150,21 +150,28 @@ function renderSkills(skills) {
         const catSkills = skills.filter(s => s.category === cat.name);
         if (catSkills.length === 0) return;
 
+        const gradClass = `bg-gradient-${(index % 3) + 1}`;
+        
         const catDiv = document.createElement('div');
-        catDiv.className = 'skill-category glass-card hover-glow reveal slide-up';
+        catDiv.className = 'skill-card project-card reveal slide-up';
         catDiv.style.transitionDelay = `${index * 0.1}s`;
         catDiv.innerHTML = `
-            <div class="skill-icon-wrapper">
-                <i class="fa-solid ${cat.icon}" style="color: ${cat.color}"></i>
+            <div class="project-img-wrapper">
+                <div class="project-placeholder ${gradClass}">
+                    <i class="fa-solid ${cat.icon}" style="font-size: 3.5rem; opacity: 0.25;"></i>
+                </div>
             </div>
-            <h3>${cat.name}</h3>
-            <div class="skill-tags">
-                ${catSkills.map(s => `
-                    <span class="skill-tag">
-                        <i class="${s.icon || 'fa-solid fa-check'}" style="color: ${cat.color}; opacity: 0.7;"></i> 
-                        ${s.name}
-                    </span>
-                `).join('')}
+            <div class="project-content">
+                <div class="project-type">${cat.name}</div>
+                <h3 class="project-title" style="font-size: 1.4rem; margin-bottom: 1rem;">Expertise Area</h3>
+                <div class="project-tech">
+                    ${catSkills.map(s => `
+                        <span class="tech-pill">
+                            <i class="${s.icon || 'fa-solid fa-check'}" style="margin-right: 4px;"></i> 
+                            ${s.name}
+                        </span>
+                    `).join('')}
+                </div>
             </div>
         `;
         grid.appendChild(catDiv);
