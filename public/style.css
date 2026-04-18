@@ -1456,17 +1456,27 @@ h1, h2, h3, h4 {
     flex-direction: column;
     align-items: center;
     max-width: 100% !important;
-    width: auto !important;
+    width: 100% !important;
+    padding: 0 1.25rem;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: clamp(1.5rem, 6.5vw, 2.2rem) !important;
     max-width: 100% !important;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    word-wrap: break-word;
   }
 
   .hero-desc {
     margin-inline: auto;
     max-width: 100% !important;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0;
   }
 
   .hero-stats {
@@ -1480,7 +1490,27 @@ h1, h2, h3, h4 {
   }
 
   .visual-card {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 1.25rem 1rem !important;
+    font-size: 0.8rem !important;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .terminal-body {
+    padding: 0.75rem !important;
+    overflow-x: hidden;
+  }
+
+  .json-output {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    word-break: break-all !important;
+    font-size: 0.75rem !important;
+    line-height: 1.4;
     max-width: 100%;
+    overflow-x: hidden;
   }
 
   /* About & Experience */
@@ -1535,10 +1565,17 @@ h1, h2, h3, h4 {
 @media screen and (max-width: 480px) {
   :root {
     --container: calc(100vw - 2rem);
+    --section-pad: 4rem;
   }
 
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 2.2rem !important;
+  }
+
+  .container {
+    width: 100% !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
   }
 
   .typing-container {
