@@ -21,7 +21,8 @@
   --danger: #ff4757;
   
   /* Misc */
-  --container: min(1300px, calc(100vw - 3rem));
+  --container: 1300px;
+  --container-pad: clamp(1.25rem, 5vw, 2.5rem);
   --radius-xl: 30px;
   --radius-lg: 18px;
   --radius-md: 12px;
@@ -37,8 +38,9 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   width: 100%;
+  position: relative;
 }
 
 body {
@@ -46,7 +48,7 @@ body {
   color: var(--text-main);
   font-family: 'Plus Jakarta Sans', sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   -webkit-font-smoothing: antialiased;
   position: relative;
   width: 100%;
@@ -145,9 +147,9 @@ h1, h2, h3, h4 {
 }
 
 .container {
-  width: var(--container);
-  max-width: 100%;
+  width: min(var(--container), calc(100vw - var(--container-pad) * 2));
   margin-inline: auto;
+  position: relative;
 }
 
 .section-padding {
@@ -1005,8 +1007,9 @@ h1, h2, h3, h4 {
 
 .project.skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  width: 100%;
 }
 
 .project-card {
@@ -1038,8 +1041,8 @@ h1, h2, h3, h4 {
 
 .dl-badge {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(4px);
   padding: 0.25rem 0.75rem;
@@ -1420,8 +1423,8 @@ h1, h2, h3, h4 {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 80%;
-    max-width: 300px;
+    width: 85vw;
+    max-width: 320px;
     height: 100vh;
     background: rgba(1, 2, 4, 0.98);
     backdrop-filter: blur(20px);
@@ -1457,15 +1460,15 @@ h1, h2, h3, h4 {
     align-items: center;
     max-width: 100% !important;
     width: 100% !important;
-    padding: 0 1.25rem;
+    padding: 0 !important;
     overflow: hidden;
     box-sizing: border-box;
   }
 
   .hero-title {
-    font-size: clamp(1.5rem, 6.5vw, 2.2rem) !important;
+    font-size: clamp(1.8rem, 9vw, 2.8rem) !important;
     max-width: 100% !important;
-    line-height: 1.3;
+    line-height: 1.15;
     margin-bottom: 1.5rem;
     text-align: center;
     word-wrap: break-word;
@@ -1474,9 +1477,26 @@ h1, h2, h3, h4 {
   .hero-desc {
     margin-inline: auto;
     max-width: 100% !important;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    line-height: 1.6;
     padding: 0;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)) !important;
+    gap: 1rem !important;
+  }
+
+  .project.skills-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .dl-badge {
+    top: 0.5rem !important;
+    right: 0.5rem !important;
+    font-size: 0.7rem !important;
+    padding: 0.2rem 0.6rem !important;
   }
 
   .hero-stats {
@@ -1492,14 +1512,19 @@ h1, h2, h3, h4 {
   .visual-card {
     max-width: 100% !important;
     width: 100% !important;
-    padding: 1.25rem 1rem !important;
-    font-size: 0.8rem !important;
+    padding: 1rem !important;
+    font-size: 0.75rem !important;
     overflow: hidden;
     box-sizing: border-box;
+    margin: 0 auto;
+  }
+
+  .terminal-header {
+    padding: 0.6rem 0.8rem !important;
   }
 
   .terminal-body {
-    padding: 0.75rem !important;
+    padding: 0.8rem !important;
     overflow-x: hidden;
   }
 
@@ -1507,8 +1532,8 @@ h1, h2, h3, h4 {
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
     word-break: break-all !important;
-    font-size: 0.75rem !important;
-    line-height: 1.4;
+    font-size: 0.7rem !important;
+    line-height: 1.5;
     max-width: 100%;
     overflow-x: hidden;
   }
@@ -1584,13 +1609,16 @@ h1, h2, h3, h4 {
     min-height: 2.5rem;
   }
 
-  .terminal-body {
-    padding: 1rem;
-    font-size: 0.8rem;
+  .json-output {
+    font-size: 0.65rem !important;
+  }
+
+  .stat-item {
+    padding: 1rem 0;
   }
   
   .section-padding {
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
 
   .contact-wrapper {
